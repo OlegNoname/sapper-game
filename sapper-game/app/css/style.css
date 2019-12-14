@@ -4,7 +4,7 @@ body {
   width: 100%;
   height: 100vh;
   background: hsl(203, 82%, 85%);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 .content {
   width: 1200px;
@@ -14,75 +14,120 @@ body {
   flex-direction: column;
 }
 .content-head {
-    width: 100%;
-    height: 100px;
-    background: #ffa4a4;
+  width: 100%;
+  height: 100px;
+  background: #ffa4a4;
 }
 .content-body {
-    padding: 25px 0;
-    /* width: 100%; */
-    height: 85vh;
-    /* background: rgb(159, 241, 235); */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 25px 0;
+  /* width: 100%; */
+  height: 85vh;
+  /* background: rgb(159, 241, 235); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.game-window{
-    margin: 0 auto;
-    width: 450px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.game-window {
+  margin: 0 auto;
+  width: 450px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.menu{
-    width: 100%;
-    height: 50px;
-    background: rgba(18, 123, 243, 0.473);
-    border: 1px solid rgba(255, 255, 255, 0.532);
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-bottom: 1px;
+.menu {
+  width: 100%;
+  height: 50px;
+  background: rgba(18, 123, 243, 0.473);
+  border: 1px solid rgba(255, 255, 255, 0.532);
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 1px;
 }
-.field{
-    width: 450px;
-    height: 450px;
+.field {
+  width: 450px;
+  height: 450px;
 }
-.cells{
-    width: 100%;
-    /* Высота отвечает за пропорции игрового поля */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-content: stretch;
+.cells {
+  width: 100%;
+  /* Высота отвечает за пропорции игрового поля */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
 }
-.row{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-content: stretch;
-    margin-bottom: 1px;
+.row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-content: stretch;
+  margin-bottom: 1px;
 }
-.cell{
-    width: 100%;
-    height: 100%;
-    background: rgba(18, 123, 243, 0.473);
-    border: 1px solid rgba(255, 255, 255, 0.532);
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-right: 1px;
+.cell {
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 123, 243, 0.473);
+  border: 1px solid rgba(255, 255, 255, 0.532);
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-right: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.cell:hover{
-    transition: 0.2s;
-    opacity: .7;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.726);;
+.cell:hover {
+  transition: 0.2s;
+  opacity: 0.7;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.726);
+}
+.cell_bomb {
+  /* background: red !important; */
+}
+.cell_flag {
+  /* background: khaki !important; */
+}
+.cell_open {
+  background: #7bb5f779 !important;
+  border: 1px solid #7bb5f779 !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+.cell_bomb::before {
+  content: "💣";
+}
+.cell_flag::before {
+  content: "🏳️‍🌈";
+}
+.cell_number_1::before {
+  content: "1";
+}
+.cell_number_2::before {
+  content: "2";
+}
+.cell_number_3::before {
+  content: "3";
+}
+.cell_number_4::before {
+  content: "4";
+}
+.cell_number_5::before {
+  content: "5";
+}
+.cell_number_6::before {
+  content: "6";
+}
+.cell_number_7::before {
+  content: "7";
+}
+.cell_number_8::before {
+  content: "8";
 }
 
-.chat{
-    width: 250px;
-    height: 500px;
-    background: rgb(83, 167, 216);
+.chat {
+  width: 250px;
+  height: 500px;
+  background: rgb(83, 167, 216);
 }
 
 /* @media (orientation: portrait) {
