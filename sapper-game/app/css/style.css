@@ -3,8 +3,8 @@ body {
   padding: 0;
   width: 100%;
   height: 100vh;
-
-  background: rgba(186, 216, 255, 0.692);
+  background: hsl(203, 82%, 85%);
+  font-family: 'Courier New', Courier, monospace;
 }
 .content {
   width: 1200px;
@@ -15,11 +15,11 @@ body {
 }
 .content-head {
     width: 100%;
-    height: 15vh;
+    height: 100px;
     background: #ffa4a4;
 }
 .content-body {
-    padding: 25px;
+    padding: 25px 0;
     /* width: 100%; */
     height: 85vh;
     /* background: rgb(159, 241, 235); */
@@ -30,44 +30,58 @@ body {
 
 .game-window{
     margin: 0 auto;
-    width: 80vh;
-    height: 80vh;
+    width: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+.menu{
+    width: 100%;
+    height: 50px;
+    background: rgba(18, 123, 243, 0.473);
+    border: 1px solid rgba(255, 255, 255, 0.532);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 1px;
+}
 .field{
+    width: 450px;
+    height: 450px;
+}
+.cells{
     width: 100%;
     /* Высота отвечает за пропорции игрового поля */
-    height: 81.25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-content: stretch;
 }
-.field__row{
+.row{
     width: 100%;
     height: 100%;
     display: flex;
     align-content: stretch;
     margin-bottom: 1px;
 }
-.field__cell{
+.cell{
     width: 100%;
     height: 100%;
     background: rgba(18, 123, 243, 0.473);
-    border: 1px solid rgba(255, 255, 255, 0.726);
+    border: 1px solid rgba(255, 255, 255, 0.532);
+    border-radius: 5px;
     box-sizing: border-box;
     margin-right: 1px;
 }
-.field__cell:hover{
+.cell:hover{
     transition: 0.2s;
     opacity: .7;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.726);;
 }
 
 .chat{
-    width: 20vw;
-    height: 80vh;
+    width: 250px;
+    height: 500px;
     background: rgb(83, 167, 216);
 }
 
