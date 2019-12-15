@@ -39,6 +39,7 @@
         //    minesAround: 0
         //};
 
+        //класс ячейки
         class Cell {
             constructor(x, y) {
                 this.x = x;
@@ -143,7 +144,8 @@
             for (let i = 0; i < countMine; i++) {
                 yy = getRandomInt(0, countLine);
                 xx = getRandomInt(0, countColumn);
-                while (xx == y || yy == x) {
+                //while (xx == y || yy == x) {
+                while (gameField[yy][xx].isMine == true || xx == y || yy == x) {
                     yy = getRandomInt(0, countLine);
                     xx = getRandomInt(0, countColumn);
                 }
