@@ -170,7 +170,11 @@
             gameField = gameField.reduce(function (flat, current) {
                 return flat.concat(current);
             }, [])
-            openCell(gameField.filter(item => item.x == x && item.y == y)[0]);
+            let thisCell =gameField.filter(item => item.x == x && item.y == y)[0];
+            if (thisCell.minesAround == 0)
+                emptyField(thisCell)
+            else
+                openCell(thisCell);
         }
 
         //Функция открытия ячеек
