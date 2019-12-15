@@ -185,17 +185,17 @@
         function openCell(cellForOpen) {
             let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
             if (cellForOpen.isMine) {
-                //thisElem.className = "cell_bomb";
-                thisElem.classList.add("cell_bomb");
+                thisElem.className = "cell cell_bomb";
+                //thisElem.classList.add("cell_bomb");
             }
             else
                 if (cellForOpen.minesAround == 0) {
-                    //thisElem.className = "cell_open";
-                    thisElem.classList.add("cell_open");
+                    thisElem.className = "cell cell_open";
+                    //thisElem.classList.add("cell_open");
                 }
                 else {
-                    thisElem.classList.add(`cell_number_${cellForOpen.minesAround}`);
-                    //thisElem.className = `cell_number_${cellForOpen.minesAround}`;
+                    //thisElem.classList.add(`cell_number_${cellForOpen.minesAround}`);
+                    thisElem.className = `cell cell_number_${cellForOpen.minesAround}`;
                 }
             cellForOpen.isOpen = true;
         }
