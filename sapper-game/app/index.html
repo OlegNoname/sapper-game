@@ -16,17 +16,20 @@
         </div> -->
         <div class="content-body">
             <div id="start_menu">
-                <input placeholder="Введите имя игрока" type="text" name="user_name" id="user_name_input">
+                <input class="input-text" placeholder="Введите имя игрока" type="text" name="user_name" id="user_name_input">
                 <button class="button" id="start_btn">Начать</button>
+                
+                
             </div>
             <div id="game_window">
                 <div id="menu">
-                    <select name="difficulty-level" id="difficulty_level">
+                    <input class="input-text" type="text" readonly name="user_name_output" id="user_name_output">
+                    <select class="select" name="difficulty-level" id="difficulty_level">
                         <option value="Лёгкий">Лёгкий</option>
                         <option value="Средний">Средний</option>
                         <option value="Сложный">Сложный</option>
                     </select>
-                    <input type="text" readonly name="user_name_output" id="user_name_output">
+
                     <button class="button" name="new-game" id="new_game_btn">Новая игра</button>
                 </div>
                 <div id="field">

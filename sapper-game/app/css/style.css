@@ -7,7 +7,26 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 .button{
-
+ border-radius: 4px;
+ background: #ffffff;
+ border: none;
+ height: 25px;
+ width: 100px;
+}
+.select{
+  border-radius: 4px;
+  border: none;
+  height: 25px;
+  /* width: 100px; */
+}
+.input-text{
+  border-radius: 4px;
+  border: none;
+  /* padding: 5px; */
+  height: 25px;
+  /* width: 120px; */
+  box-sizing: border-box;
+  padding: 5px;
 }
 .content {
   width: 1200px;
@@ -58,6 +77,7 @@ body {
 }
 #user_name_output{
   width: 100px;
+  /* border-radius: 5px; */
 }
 #menu {
   width: 100%;

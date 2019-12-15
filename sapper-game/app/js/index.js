@@ -186,31 +186,14 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-<<<<<<< HEAD
             // let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
                 // cellInArr.isBlock = false;
-=======
-
-            if(game_field.filter(item => item.isMine == true).length == 0)
-            {    
-                newField(x, y);
-            }
-
-            //let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
-            if (cell.classList.contains('cell_flag')) {
-                cell.classList.remove('cell_flag');
-                //cellInArr.isBlock = false;
->>>>>>> 89e871a9f6a44511bd66158db18a42d89360620e
             }
             else {
                 cell.classList.add('cell_flag');
-<<<<<<< HEAD
                 // cellInArr.isBlock = true;
-=======
-                //cellInArr.isBlock = true;
->>>>>>> 89e871a9f6a44511bd66158db18a42d89360620e
             }
 
         }
