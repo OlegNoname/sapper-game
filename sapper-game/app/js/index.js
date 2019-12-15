@@ -113,7 +113,6 @@
             if(gameField.filter(item => item.isMine == true).length == 0)
             {    
                 newField(x, y);
-                openCell(cell);
             }
             else
             {
@@ -177,6 +176,9 @@
                 if (gameField[yy+1] && gameField[yy+1][xx-1])
                     gameField[yy+1][xx-1].minesAround++;
             }
+            let cellInArr = gameField.values.filter(item => item.x == x && item.y == y);
+            console.log(cellInArr)
+            openCell(cellInArr);
             console.log(gameField);
         }
 
