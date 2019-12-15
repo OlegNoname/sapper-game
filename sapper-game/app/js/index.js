@@ -85,9 +85,34 @@
             }
         }
 
+        function move(cell)
+        {
+            let id = cell.id.split('_')
+            let x = id[1];
+            let y = id[2];
+            if(game_field.filter(item => item.isMine == true).length == 0)
+            {    
+                newField(x, y);
+                openCell(cell);
+            }
+            else
+            {
+                let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0];
+                if(!cellInArr.isOpen && !cellInArr.isBlock)
+                {
+                    if(cellInArr.isMine)
+                        gameOver(cell);
+                    else if (cellInArr.minesAround == 0)
+                        emptyField(cellInArr);    
+                    //emptyField(x, y);
+                        else
+                        openCell(cellInArr);
+                }
+            }
+        }
+
         //Функция открытия ячеек
         function openCell(cellForOpen) {
-            //????event.classList.add('open');
             //document.getElementById(`cell_${x}_${y}`').classList.add('open');
             let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
             if (cellForOpen.isMine) {
@@ -104,10 +129,11 @@
         }
 
         //Функция обработки нажатия на пустое поле (вокруг этой ячейки нет мин)
-        function emptyField(x, y) {
-            openCell(gameField.filter(item => item.x == x && item.y == y)[0]);
+        function emptyField(cellInArr) {
+            //openCell(gameField.filter(item => item.x == x && item.y == y)[0]);
+            openCell(cellInArr);
             let cellsForOpen = [];
-            let check_cells = cellAround(x, y);
+            let check_cells = cellAround(cellInArr.x, cellInArr.y);
             for (let i = 0; i < check_cells.length; i++) {
                 openCell(check_cells[i]);
             }
@@ -153,15 +179,21 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-            let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
+
+            if(game_field.filter(item => item.isMine == true).length == 0)
+            {    
+                newField(x, y);
+            }
+
+            //let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
-                cellInArr.isBlock = false;
+                //cellInArr.isBlock = false;
             }
             else 
             {
                 cell.classList.add('cell_flag');
-                cellInArr.isBlock = true;
+                //cellInArr.isBlock = true;
             }
 
         }
