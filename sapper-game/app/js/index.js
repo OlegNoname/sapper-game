@@ -18,6 +18,7 @@
                 move(target);
             }
         })
+        new_game_btn.addEventListener('click', newGame)
 
         //Объект ячейки
         let cell =
@@ -39,8 +40,12 @@
         //Количество колонок в поле
         let countColumn = 0;
 
+        newGame();
+
+        //Функция отрисовки поля
         function newGame() {
-            const level = difficulty - level.options.selectedIndex;
+            const level = difficulty_level.options.selectedIndex;
+            gameField = [];
             switch (level) {
                 case 0:
                     countLine = 9;
@@ -53,10 +58,25 @@
                     countMine = 40;
                     break;
                 case 2:
-                    countLine = 30;
-                    countColumn = 16;
+                    countLine = 16;
+                    countColumn = 30;
                     countMine = 99;
                     break;
+            }
+            cells.style.height = `${countLine / countColumn * 100}%`
+            //Очистить поле
+            cells.innerHTML = '';
+            //Отрисовать поле
+            for (let i = 0; i < countLine; i++) {
+                let thisLine = document.createElement('div');
+                thisLine.className = "row";
+                for (let j = 0; j < countColumn; j++) {
+                    let thisCell = document.createElement('div');
+                    thisCell.className = "cell";
+                    thisCell.id = `cell_${i}_${j}`;
+                    thisLine.appendChild(thisCell);
+                }
+                cells.appendChild(thisLine);
             }
         }
 
