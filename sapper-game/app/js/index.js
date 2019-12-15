@@ -131,6 +131,15 @@
             }
         }
 
+        //возвращает случайное значение
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+          }
+
+
+        //генерация нового поля
         function newField(x, y)
         {
             for (let i = 0; i < countLine; i++)
@@ -141,6 +150,34 @@
                     gameField[i][j] = new Cell(i, j);
                 }
             }
+            for (let i = 0; i < countMine; i++)
+            {
+                yy = getRandomInt(0, countLine);
+                xx = getRandomInt(0, countColumn);
+                while (xx == y || yy == x)
+                {
+                    yy = getRandomInt(0, countLine);
+                    xx = getRandomInt(0, countColumn);
+                }
+                gameField[yy][xx].isMine = true;
+                if (gameField[yy+1] && gameField[yy+1][xx])
+                    gameField[yy+1][xx].minesAround++;
+                if (gameField[yy] && gameField[yy][xx+1])
+                    gameField[yy][xx+1].minesAround++;
+                if (gameField[yy-1] && gameField[yy-1][xx])
+                    gameField[yy-1][xx].minesAround++;
+                if (gameField[yy] && gameField[yy][xx-1])
+                    gameField[yy][xx-1].minesAround++;
+                if (gameField[yy-1] && gameField[yy-1][xx-1])
+                    gameField[yy-1][xx-1].minesAround++;
+                if (gameField[yy+1] && gameField[yy+1][xx+1])
+                    gameField[yy+1][xx+1].minesAround++;
+                if (gameField[yy-1] && gameField[yy-1][xx+1])
+                    gameField[yy-1][xx+1].minesAround++;
+                if (gameField[yy+1] && gameField[yy+1][xx-1])
+                    gameField[yy+1][xx-1].minesAround++;
+            }
+            console.log(gameField);
         }
 
         //Функция открытия ячеек
