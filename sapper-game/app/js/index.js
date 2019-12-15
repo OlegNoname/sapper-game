@@ -51,18 +51,23 @@
                     countLine = 9;
                     countColumn = 9;
                     countMine = 10;
+                    cells.style.fontSize = '2em';
                     break;
                 case 1:
                     countLine = 16;
                     countColumn = 16;
                     countMine = 40;
+                    cells.style.fontSize = '1em';
                     break;
                 case 2:
-                    countLine = 16;
-                    countColumn = 30;
+                    countLine = 20;
+                    countColumn = 24;
                     countMine = 99;
+                    cells.style.fontSize = '0.6em';
+                    
                     break;
             }
+            
             cells.style.height = `${countLine / countColumn * 100}%`
             //Очистить поле
             cells.innerHTML = '';

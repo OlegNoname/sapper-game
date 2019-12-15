@@ -51,6 +51,7 @@ body {
 .field {
   width: 450px;
   height: 450px;
+  font-size: 16px;
 }
 .cells {
   width: 100%;
@@ -59,6 +60,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: stretch;
+  /* font-size: ; */
 }
 .row {
   width: 100%;
@@ -79,7 +81,6 @@ body {
   justify-content: center;
   align-items: center;
 
-  font-size: small;
 }
 .cell:hover {
   transition: 0.2s;
@@ -103,6 +104,7 @@ body {
 }
 .cell_flag::before {
   content: "🏳️‍🌈";
+  
   /* font-size: 1em; */
 }
 .cell_number_1::before {
