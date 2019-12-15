@@ -186,15 +186,6 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-<<<<<<< HEAD
-=======
-            
-            // if(game_field.filter(item => item.isMine == true).length == 0)
-            // {    
-            //     newField(x, y);
-            // }
-
->>>>>>> 503a3417d26db09915c138c9874bdf612686f3db
             // let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
