@@ -116,11 +116,15 @@
                 if (!cellInArr.isOpen && !cellInArr.isBlock) {
                     if (cellInArr.isMine)
                         youLose(cellInArr);
-                    else if (cellInArr.minesAround == 0)
+                    else if (cellInArr.minesAround == 0) {
                         emptyField(cellInArr);
+                        youWin();
+                    }
                     //emptyField(x, y);
-                    else
+                    else {
                         openCell(cellInArr);
+                        youWin();
+                    }
                 }
             }
         }
@@ -170,7 +174,7 @@
             gameField = gameField.reduce(function (flat, current) {
                 return flat.concat(current);
             }, [])
-            let thisCell =gameField.filter(item => item.x == x && item.y == y)[0];
+            let thisCell = gameField.filter(item => item.x == x && item.y == y)[0];
             if (thisCell.minesAround == 0)
                 emptyField(thisCell)
             else
@@ -244,11 +248,12 @@
         function youWin() {
             let check_cells = gameField.filter(item => item.isMine == false && item.isOpen == false)
             if (check_cells.length == 0) {
-                alert("Вы выйграли.");
-                check_cells = gameField.filter(item => item.isMine == true);
-                for (let i = 0; i < check_cells.length; i++) {
-                    check_cells[i].isBlock = true;
+                cellsMines = gameField.filter(item => item.isMine == true);
+                for (let i = 0; i < cellsMines.length; i++) {
+                    cellsMines[i].isBlock = true;
+                    cellsMines[i].isOpen = true;
                 }
+                alert("Вы выиграли");
             }
         }
 
