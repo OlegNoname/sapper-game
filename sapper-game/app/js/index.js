@@ -124,6 +124,7 @@
             let last_line = (x + 1 < countLine ? x + 1 : countLine - 1);
             let first_column = (y - 1 < 0 ? 0 : y - 1);
             let last_column = (y + 1 < countColumn ? y + 1 : countColumn - 1);
+            
             let check_cells = game_field.filter(item => item.y >= first_column && item.y <= last_column
                 && item.x <= last_line && item.x >= first_line
                 && item.isMine == false && item.isOpen == false);
@@ -144,10 +145,19 @@
 
         //Функция добавления/снятия флага
         function setClearFlag(cell) {
+            let id = cell.id.split('_')
+            let x = id[1];
+            let y = id[2];
+            let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
+                cellInArr.isBlock = false;
             }
-            else cell.classList.add('cell_flag');
+            else 
+            {
+                cell.classList.add('cell_flag');
+                cellInArr.isBlock = true;
+            }
 
         }
     }, false);
