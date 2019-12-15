@@ -11,6 +11,13 @@
                 setClearFlag(target);
             }
         })
+        //Обработчик нажатия ЛКМ на любую клетку внутри игрового поля
+        cells.addEventListener('click', (event)=>{
+            let target = event.target;
+            if (target.classList.contains('cell')) {
+                
+            }
+        })
         //Функция добавления/снятия флага
         function setClearFlag(cell) {
             if (cell.classList.contains('cell_flag')) {

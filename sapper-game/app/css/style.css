@@ -78,6 +78,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-size: small;
 }
 .cell:hover {
   transition: 0.2s;
@@ -101,6 +103,7 @@ body {
 }
 .cell_flag::before {
   content: "🏳️‍🌈";
+  /* font-size: 1em; */
 }
 .cell_number_1::before {
   content: "1";
