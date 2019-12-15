@@ -25,20 +25,31 @@
             user_name_output.value = userName;
             start_menu.style.display = 'none';
             game_window.style.display = 'flex';
-            
+
         })
 
         //Объект ячейки
-        let cell =
-        {
-            x: 0,
-            y: 0,
-            isMine: false,
-            isOpen: false,
-            isBlock: false,
-            minesAround: 0
-        };
+        //let cell =
+        //{
+        //    x: 0,
+        //    y: 0,
+        //    isMine: false,
+        //    isOpen: false,
+        //    isBlock: false,
+        //    minesAround: 0
+        //};
 
+        //класс ячейки
+        class Cell {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.isMine = false;
+                this.isOpen = false;
+                this.isBlock = false;
+                this.minesAround = 0;
+            }
+        }
         //Игровое поле
         let gameField = [];
         //Количество мин в игре
@@ -93,46 +104,110 @@
         }
 
         //Функция обработки хода
-        function move(cell)
-        {
+        function move(cell) {
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-            if(game_field.filter(item => item.isMine == true).length == 0)
-            {    
-                //newField(x, y);
-                openCell(cell);
+            if (gameField.filter(item => item.isMine == true).length == 0) {
+                newField(x, y);
             }
-            else
-            {
-                let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0];
-                if(!cellInArr.isOpen && !cellInArr.isBlock)
-                {
-                    if(cellInArr.isMine)
-                        gameOver(cell);
-                    else if (cellInArr.minesAround == 0)
-                        emptyField(cellInArr);    
+            else {
+                let cellInArr = gameField.filter(item => item.x == x && item.y == y)[0];
+                if (!cellInArr.isOpen && !cellInArr.isBlock) {
+                    if (cellInArr.isMine)
+                        youLose(cellInArr);
+                    else if (cellInArr.minesAround == 0) {
+                        emptyField(cellInArr);
+                        youWin();
+                    }
                     //emptyField(x, y);
-                        else
+                    else {
                         openCell(cellInArr);
+                        youWin();
+                    }
                 }
             }
+        }
+
+        //возвращает случайное значение
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+        }
+
+
+        //генерация нового поля
+        function newField(x, y) {
+            for (let i = 0; i < countLine; i++) {
+                gameField[i] = []
+                for (let j = 0; j < countColumn; j++) {
+                    gameField[i][j] = new Cell(i, j);
+                }
+            }
+            for (let i = 0; i < countMine; i++) {
+                yy = getRandomInt(0, countLine);
+                xx = getRandomInt(0, countColumn);
+                //while (xx == y || yy == x) {
+                while (gameField[yy][xx].isMine == true || xx == y || yy == x) {
+                    yy = getRandomInt(0, countLine);
+                    xx = getRandomInt(0, countColumn);
+                }
+                gameField[yy][xx].isMine = true;
+                if (gameField[yy + 1] && gameField[yy + 1][xx])
+                    gameField[yy + 1][xx].minesAround++;
+                if (gameField[yy] && gameField[yy][xx + 1])
+                    gameField[yy][xx + 1].minesAround++;
+                if (gameField[yy - 1] && gameField[yy - 1][xx])
+                    gameField[yy - 1][xx].minesAround++;
+                if (gameField[yy] && gameField[yy][xx - 1])
+                    gameField[yy][xx - 1].minesAround++;
+                if (gameField[yy - 1] && gameField[yy - 1][xx - 1])
+                    gameField[yy - 1][xx - 1].minesAround++;
+                if (gameField[yy + 1] && gameField[yy + 1][xx + 1])
+                    gameField[yy + 1][xx + 1].minesAround++;
+                if (gameField[yy - 1] && gameField[yy - 1][xx + 1])
+                    gameField[yy - 1][xx + 1].minesAround++;
+                if (gameField[yy + 1] && gameField[yy + 1][xx - 1])
+                    gameField[yy + 1][xx - 1].minesAround++;
+            }
+            gameField = gameField.reduce(function (flat, current) {
+                return flat.concat(current);
+            }, [])
+            let thisCell = gameField.filter(item => item.x == x && item.y == y)[0];
+            if (thisCell.minesAround == 0)
+                emptyField(thisCell)
+            else
+                openCell(thisCell);
         }
 
         //Функция открытия ячеек
         function openCell(cellForOpen) {
             let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
             if (cellForOpen.isMine) {
-                thisElem.className = "cell_bomb";
+                //thisElem.className = "cell_bomb";
+                thisElem.classList.add("cell_bomb");
             }
             else
                 if (cellForOpen.minesAround == 0) {
-                    thisElem.className = "cell_open";
+                    //thisElem.className = "cell_open";
+                    thisElem.classList.add("cell_open");
                 }
                 else {
-                    thisElem.className = `cell_number_${cellForOpen.minesAround}`;
+                    thisElem.classList.add(`cell_number_${cellForOpen.minesAround}`);
+                    //thisElem.className = `cell_number_${cellForOpen.minesAround}`;
                 }
             cellForOpen.isOpen = true;
+        }
+
+        function youLose(cellInArr) {
+            openCell(cellInArr);
+            let openMines = gameField.filter(item => item.isMine == true);
+            openMines.forEach(item => openCell(item));
+            for (let i = 0; i < gameField.length; i++) {
+                gameField[i].isBlock = true;
+                gameField[i].isOpen = true;
+            }
         }
 
         //Функция обработки нажатия на пустое поле (вокруг этой ячейки нет мин)
@@ -163,7 +238,7 @@
             let first_column = (y - 1 < 0 ? 0 : y - 1);
             let last_column = (y + 1 < countColumn ? y + 1 : countColumn - 1);
 
-            let check_cells = game_field.filter(item => item.y >= first_column && item.y <= last_column
+            let check_cells = gameField.filter(item => item.y >= first_column && item.y <= last_column
                 && item.x <= last_line && item.x >= first_line
                 && item.isMine == false && item.isOpen == false);
             return check_cells;
@@ -171,13 +246,14 @@
 
         //Функция проверки выигрыша игрока
         function youWin() {
-            let check_cells = game_field.filter(item => item.isMine == false && item.isOpen == false)
+            let check_cells = gameField.filter(item => item.isMine == false && item.isOpen == false)
             if (check_cells.length == 0) {
-                alert("Вы выйграли.");
-                check_cells = game_field.filter(item => item.isMine == true);
-                for (let i = 0; i < check_cells.length; i++) {
-                    check_cells[i].isBlock = true;
+                cellsMines = gameField.filter(item => item.isMine == true);
+                for (let i = 0; i < cellsMines.length; i++) {
+                    cellsMines[i].isBlock = true;
+                    cellsMines[i].isOpen = true;
                 }
+                alert("Вы выиграли");
             }
         }
 
@@ -191,9 +267,17 @@
                 cell.classList.remove('cell_flag');
                 // cellInArr.isBlock = false;
             }
-            else {
-                cell.classList.add('cell_flag');
-                // cellInArr.isBlock = true;
+
+            let cellInArr = gameField.filter(item => item.x == x && item.y == y)[0]
+            if (!cellInArr.isOpen) {
+                if (cell.classList.contains('cell_flag')) {
+                    cell.classList.remove('cell_flag');
+                    cellInArr.isBlock = false;
+                }
+                else {
+                    cell.classList.add('cell_flag');
+                    cellInArr.isBlock = true;
+                }
             }
 
         }
