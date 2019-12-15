@@ -176,10 +176,9 @@
                 if (gameField[yy+1] && gameField[yy+1][xx-1])
                     gameField[yy+1][xx-1].minesAround++;
             }
-            let cellInArr = gameField.values.filter(item => item.x == x && item.y == y);
-            console.log(cellInArr)
-            openCell(cellInArr);
-            console.log(gameField);
+            gameField = gameField.reduce(function(flat, current) {
+                return flat.concat(current);
+                }, [])
         }
 
         //Функция открытия ячеек
