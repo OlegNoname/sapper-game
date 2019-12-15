@@ -1,6 +1,6 @@
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
-        const
+        let
             cells = document.querySelector('.cells');
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
         cells.addEventListener('contextmenu', (event) => {
@@ -12,10 +12,10 @@
             }
         })
         //Обработчик нажатия ЛКМ на любую клетку внутри игрового поля
-        cells.addEventListener('click', (event)=>{
+        cells.addEventListener('click', (event) => {
             let target = event.target;
             if (target.classList.contains('cell')) {
-                
+                move(target);
             }
         })
 
@@ -39,22 +39,40 @@
         //Количество колонок в поле
         let countColumn = 0;
 
+        function newGame() {
+            const level = difficulty - level.options.selectedIndex;
+            switch (level) {
+                case 0:
+                    countLine = 9;
+                    countColumn = 9;
+                    countMine = 10;
+                    break;
+                case 1:
+                    countLine = 16;
+                    countColumn = 16;
+                    countMine = 40;
+                    break;
+                case 2:
+                    countLine = 30;
+                    countColumn = 16;
+                    countMine = 99;
+                    break;
+            }
+        }
+
         //Функция открытия ячеек
         function openCell(cellForOpen) {
             //????event.classList.add('open');
             //document.getElementById(`cell_${x}_${y}`').classList.add('open');
             let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
-            if(cellForOpen.isMine)
-                {
-                    thisElem.className = "cell_bomb";
-                }
+            if (cellForOpen.isMine) {
+                thisElem.className = "cell_bomb";
+            }
             else
-                if(cellForOpen.minesAround == 0)
-                {
+                if (cellForOpen.minesAround == 0) {
                     thisElem.className = "cell_open";
                 }
-                else
-                {
+                else {
                     thisElem.className = `cell_number_${cellForOpen.minesAround}`;
                 }
             cellForOpen.isOpen = true;
