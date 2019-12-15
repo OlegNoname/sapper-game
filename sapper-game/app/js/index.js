@@ -92,6 +92,7 @@
             }
         }
 
+        //Функция обработки хода
         function move(cell)
         {
             let id = cell.id.split('_')
@@ -99,7 +100,7 @@
             let y = id[2];
             if(game_field.filter(item => item.isMine == true).length == 0)
             {    
-                newField(x, y);
+                //newField(x, y);
                 openCell(cell);
             }
             else
@@ -120,7 +121,6 @@
 
         //Функция открытия ячеек
         function openCell(cellForOpen) {
-            //document.getElementById(`cell_${x}_${y}`').classList.add('open');
             let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
             if (cellForOpen.isMine) {
                 thisElem.className = "cell_bomb";
@@ -186,6 +186,15 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
+<<<<<<< HEAD
+=======
+            
+            // if(game_field.filter(item => item.isMine == true).length == 0)
+            // {    
+            //     newField(x, y);
+            // }
+
+>>>>>>> 503a3417d26db09915c138c9874bdf612686f3db
             // let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
