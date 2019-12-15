@@ -39,26 +39,40 @@
         //Количество колонок в поле
         let countColumn = 0;
 
-        //Функция открытия путых ячеек
-        function openCell(x, y) {
+        //Функция открытия ячеек
+        function openCell(cellForOpen) {
             //????event.classList.add('open');
             //document.getElementById(`cell_${x}_${y}`').classList.add('open');
-            gameField.filter(item => item.x == x && item.y == y)[0].isOpen = true;
+            let thisElem = document.getElementById(`cell_${cellForOpen.x}_${cellForOpen.y}`);
+            if(cellForOpen.isMine)
+                {
+                    thisElem.className = "cell_bomb";
+                }
+            else
+                if(cellForOpen.minesAround == 0)
+                {
+                    thisElem.className = "cell_open";
+                }
+                else
+                {
+                    thisElem.className = `cell_number_${cellForOpen.minesAround}`;
+                }
+            cellForOpen.isOpen = true;
         }
 
         //Функция обработки нажатия на пустое поле (вокруг этой ячейки нет мин)
         function emptyField(x, y) {
-            openCell(x, y);
+            openCell(gameField.filter(item => item.x == x && item.y == y)[0]);
             let cellsForOpen = [];
             let check_cells = cellAround(x, y);
             for (let i = 0; i < check_cells.length; i++) {
-                openCell(check_cells[i].x, check_cells[i].y);
+                openCell(check_cells[i]);
             }
             check_cells = check_cells.filter(item => item.minesAround == 0);
             while (check_cells.length != 0) {
                 let cellsForOpen = cellAround(check_cells[0].x, check_cells[0].y);
                 for (let i = 0; i < cellsForOpen.length; i++) {
-                    openCell(cellsForOpen[i].x, cellsForOpen[i].y);
+                    openCell(cellsForOpen[i]);
                 }
                 cellsForOpen = cellsForOpen.filter(item => item.minesAround == 0);
                 check_cells.shift();
