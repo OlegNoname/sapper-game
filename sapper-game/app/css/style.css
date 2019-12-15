@@ -6,6 +6,9 @@ body {
   background: hsl(203, 82%, 85%);
   font-family: "Courier New", Courier, monospace;
 }
+.button{
+
+}
 .content {
   width: 1200px;
   height: 100%;
@@ -28,15 +31,35 @@ body {
   align-items: center;
 }
 
-.game-window {
+#game_window {
   margin: 0 auto;
   width: 450px;
   height: 500px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+#start_menu{
+  width: 450px;
+  height: 500px;
+  background: rgba(18, 123, 243, 0.473);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
-.menu {
+
+#user_name_input{
+  /* width: 200px; */
+  margin-bottom: 20px;
+}
+#user_name_output{
+  width: 100px;
+}
+#menu {
   width: 100%;
   height: 50px;
   background: rgba(18, 123, 243, 0.473);
@@ -44,14 +67,18 @@ body {
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 1px;
+  display: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  
 }
-.field {
+#field {
   width: 450px;
   height: 450px;
   font-size: 16px;
+  /* display: none; */
 }
 .cells {
   width: 100%;

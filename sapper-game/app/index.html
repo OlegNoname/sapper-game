@@ -11,20 +11,25 @@
 
 <body>
     <div class="content">
-        <div class="content-head">
+        <!-- <div class="content-head">
             Шапка
-        </div>
+        </div> -->
         <div class="content-body">
-            <div class="game-window">
-                <div class="menu">
+            <div id="start_menu">
+                <input placeholder="Введите имя игрока" type="text" name="user_name" id="user_name_input">
+                <button class="button" id="start_btn">Начать</button>
+            </div>
+            <div id="game_window">
+                <div id="menu">
                     <select name="difficulty-level" id="difficulty_level">
                         <option value="Лёгкий">Лёгкий</option>
                         <option value="Средний">Средний</option>
                         <option value="Сложный">Сложный</option>
                     </select>
-                    <button name="new-game" id="new_game_btn">Новая игра</button>
+                    <input type="text" readonly name="user_name_output" id="user_name_output">
+                    <button class="button" name="new-game" id="new_game_btn">Новая игра</button>
                 </div>
-                <div class="field">
+                <div id="field">
                     <div class="cells">
                         <!-- Здесь генерировать строки и в них клетки -->
                         <!-- ТЕСТОВЫЙ ПРИМЕР, ДЛЯ ОТРАБОТКИ СКРИПТОВ РИСУЙТЕ ПОЛЕ САМИ -->

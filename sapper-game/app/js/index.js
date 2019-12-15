@@ -1,7 +1,8 @@
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         let
-            cells = document.querySelector('.cells');
+            cells = document.querySelector('.cells'),
+            userName = '';
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
         cells.addEventListener('contextmenu', (event) => {
             event.preventDefault();
@@ -18,7 +19,14 @@
                 move(target);
             }
         })
-        new_game_btn.addEventListener('click', newGame)
+        new_game_btn.addEventListener('click', newGame);
+        start_btn.addEventListener('click', () => {
+            userName = user_name_input.value;
+            user_name_output.value = userName;
+            start_menu.style.display = 'none';
+            game_window.style.display = 'flex';
+            
+        })
 
         //Объект ячейки
         let cell =
@@ -64,10 +72,9 @@
                     countColumn = 24;
                     countMine = 99;
                     cells.style.fontSize = '0.6em';
-                    
                     break;
             }
-            
+
             cells.style.height = `${countLine / countColumn * 100}%`
             //Очистить поле
             cells.innerHTML = '';
@@ -129,7 +136,7 @@
             let last_line = (x + 1 < countLine ? x + 1 : countLine - 1);
             let first_column = (y - 1 < 0 ? 0 : y - 1);
             let last_column = (y + 1 < countColumn ? y + 1 : countColumn - 1);
-            
+
             let check_cells = game_field.filter(item => item.y >= first_column && item.y <= last_column
                 && item.x <= last_line && item.x >= first_line
                 && item.isMine == false && item.isOpen == false);
@@ -153,15 +160,14 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-            let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
+            // let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
             if (cell.classList.contains('cell_flag')) {
                 cell.classList.remove('cell_flag');
-                cellInArr.isBlock = false;
+                // cellInArr.isBlock = false;
             }
-            else 
-            {
+            else {
                 cell.classList.add('cell_flag');
-                cellInArr.isBlock = true;
+                // cellInArr.isBlock = true;
             }
 
         }
