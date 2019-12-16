@@ -2,6 +2,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         let
             cells = document.querySelector('.cells'),
+            chat = document.querySelector('.chat'),
             userName = '';
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
         cells.addEventListener('contextmenu', (event) => {
@@ -19,12 +20,17 @@
                 move(target);
             }
         })
+
+        //Запуск игры после подтверждения имени игрока
         new_game_btn.addEventListener('click', newGame);
         start_btn.addEventListener('click', () => {
             userName = user_name_input.value;
             user_name_output.value = userName;
             start_menu.style.display = 'none';
+            modal.style.display = 'none';
+            chat.style.display = 'block';
             game_window.style.display = 'flex';
+
 
         })
 
@@ -82,11 +88,13 @@
                     countLine = 20;
                     countColumn = 24;
                     countMine = 99;
-                    cells.style.fontSize = '0.6em';
+                    cells.style.fontSize = '0.8em';
                     break;
             }
 
-            cells.style.height = `${countLine / countColumn * 100}%`
+            cells.style.width = `${countColumn / countLine * 100}%`;
+            menu.style.width = `${countColumn / countLine * 100}%`;
+
             //Очистить поле
             cells.innerHTML = '';
             //Отрисовать поле
@@ -195,6 +203,7 @@
                 }
                 else {
                     thisElem.classList.add(`cell_number_${cellForOpen.minesAround}`);
+                    thisElem.classList.add('cell_open');
                     //thisElem.className = `cell_number_${cellForOpen.minesAround}`;
                 }
             cellForOpen.isOpen = true;
@@ -262,10 +271,9 @@
             let id = cell.id.split('_')
             let x = id[1];
             let y = id[2];
-            // let cellInArr = game_field.filter(item => item.x == x && item.y == y)[0]
-            if (cell.classList.contains('cell_flag')) {
-                cell.classList.remove('cell_flag');
-                // cellInArr.isBlock = false;
+
+            if (gameField.filter(item => item.isMine == true).length == 0) {
+                newField(x, y);
             }
 
             let cellInArr = gameField.filter(item => item.x == x && item.y == y)[0]
