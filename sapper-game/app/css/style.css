@@ -17,7 +17,6 @@ body {
   border-radius: 4px;
   border: none;
   height: 25px;
-
   box-sizing: content-box;
   border: 1.5px solid #00489b79;
 }
@@ -74,6 +73,8 @@ body {
   opacity: 0.9;
 }
 #user_name_input {
+  width: 150px;
+  height: 40px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 18px;
@@ -91,13 +92,13 @@ body {
   font-size: 18px;
 }
 #user_name_output {
-  width: 80px;
+  width: 100px;
 }
 #time_counter {
-  width: 50px;
+  width: 80px;
 }
 #bomb_counter {
-  width: 40px;
+  width: 60px;
 }
 #game_window {
   display: none;
@@ -110,7 +111,6 @@ body {
   transition: 0.4s;
 }
 .game_window_wide {
-
   /* width: 530px !important; */
 }
 .chat {

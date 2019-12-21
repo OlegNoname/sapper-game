@@ -3,6 +3,7 @@
         let
             cells = document.querySelector('.cells'),
             chat = document.querySelector('.chat'),
+            flag = true,
             userName = '';
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
         cells.addEventListener('contextmenu', (event) => {
@@ -30,10 +31,6 @@
             modal.style.display = 'none';
             chat.style.display = 'block';
             game_window.style.display = 'flex';
-
-
-
-
         })
 
         //Объект ячейки
@@ -73,9 +70,10 @@
         function newGame() {
             const level = difficulty_level.options.selectedIndex;
             const GameWindow = document.getElementById('game_window');
-            GameWindow.classList.remove('game_window_wide');
+            const wideGameWindow = document.querySelector('.game_window_wide');
             //Сбрасываем ширину по умолчанию до стандартной
-            GameWindow.style.width = '';
+
+
             console.log(GameWindow.offsetWidth)
             gameField = [];
 
@@ -85,12 +83,16 @@
                     countColumn = 9;
                     countMine = 10;
                     cells.style.fontSize = '2em';
+                    GameWindow.style.width = '';
+                    flag = true;
                     break;
                 case 1:
                     countLine = 16;
                     countColumn = 16;
                     countMine = 40;
                     cells.style.fontSize = '1em';
+                    GameWindow.style.width = '';
+                    flag = true;
                     break;
                 case 2:
                     countLine = 20;
@@ -98,12 +100,17 @@
                     countMine = 99;
                     cells.style.fontSize = '0.8em';
 
+
                     //Установка размера игрового поля в зависимости количества строк и столбцов
                     //Если поле становится прямоугольным, то необходимо менять пропорции поля
                     const widthFactor = countColumn / countLine;
-                    
+
                     //Выставляем новую ширину для пропорциональности поля
-                    GameWindow.style.width = `${widthFactor * GameWindow.offsetWidth}px`;
+                    if (flag) {
+                        GameWindow.style.width = `${widthFactor * GameWindow.offsetWidth}px`;
+                        flag = false;
+                    }
+
                     break;
             }
 
