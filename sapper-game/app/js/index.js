@@ -32,6 +32,8 @@
             game_window.style.display = 'flex';
 
 
+
+
         })
 
         //Объект ячейки
@@ -70,7 +72,13 @@
         //Функция отрисовки поля
         function newGame() {
             const level = difficulty_level.options.selectedIndex;
+            const GameWindow = document.getElementById('game_window');
+            GameWindow.classList.remove('game_window_wide');
+            //Сбрасываем ширину по умолчанию до стандартной
+            GameWindow.style.width = '';
+            console.log(GameWindow.offsetWidth)
             gameField = [];
+
             switch (level) {
                 case 0:
                     countLine = 9;
@@ -89,11 +97,18 @@
                     countColumn = 24;
                     countMine = 99;
                     cells.style.fontSize = '0.8em';
+
+                    //Установка размера игрового поля в зависимости количества строк и столбцов
+                    //Если поле становится прямоугольным, то необходимо менять пропорции поля
+                    const widthFactor = countColumn / countLine;
+                    
+                    //Выставляем новую ширину для пропорциональности поля
+                    GameWindow.style.width = `${widthFactor * GameWindow.offsetWidth}px`;
                     break;
             }
 
-            cells.style.width = `${countColumn / countLine * 100}%`;
-            menu.style.width = `${countColumn / countLine * 100}%`;
+            // cells.style.width = `${countColumn / countLine * 100}%`;
+            // menu.style.width = `${countColumn / countLine * 100}%`;
 
             //Очистить поле
             cells.innerHTML = '';
