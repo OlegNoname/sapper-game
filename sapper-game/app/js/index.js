@@ -3,16 +3,19 @@
         let
             cells = document.querySelector('.cells'),
             chat = document.querySelector('.chat'),
-            flag = true,
+            gameWindowIsWide = false,
             userName = '';
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
         cells.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             let target = event.target;
             if (target.classList.contains('cell')) {
-
                 setClearFlag(target);
             }
+        })
+        //Обработчик нажатия на кнопку после завершения игры
+        game_over_btn.addEventListener('click',()=>{
+            game_window_modal_background.style.display = 'none';
         })
         //Обработчик нажатия ЛКМ на любую клетку внутри игрового поля
         cells.addEventListener('click', (event) => {
@@ -28,7 +31,7 @@
             userName = user_name_input.value;
             user_name_output.value = userName;
             start_menu.style.display = 'none';
-            modal.style.display = 'none';
+            content_modal_background.style.display = 'none';
             chat.style.display = 'block';
             game_window.style.display = 'flex';
         })
@@ -84,7 +87,7 @@
                     countMine = 10;
                     cells.style.fontSize = '2em';
                     GameWindow.style.width = '';
-                    flag = true;
+                    gameWindowIsWide = false;
                     break;
                 case 1:
                     countLine = 16;
@@ -92,7 +95,7 @@
                     countMine = 40;
                     cells.style.fontSize = '1em';
                     GameWindow.style.width = '';
-                    flag = true;
+                    gameWindowIsWide = false;
                     break;
                 case 2:
                     countLine = 20;
@@ -106,9 +109,9 @@
                     const widthFactor = countColumn / countLine;
 
                     //Выставляем новую ширину для пропорциональности поля
-                    if (flag) {
+                    if (!gameWindowIsWide) {
                         GameWindow.style.width = `${widthFactor * GameWindow.offsetWidth}px`;
-                        flag = false;
+                        gameWindowIsWide = true;
                     }
 
                     break;
@@ -231,8 +234,13 @@
             cellForOpen.isOpen = true;
         }
 
+
         function youLose(cellInArr) {
             openCell(cellInArr);
+            
+            const pressedCell = document.getElementById(`cell_${cellInArr.x}_${cellInArr.y}`);
+            //Добавляется красный цвет нажатой бомбе
+            pressedCell.style.background = '#ff5050';
             let openMines = gameField.filter(item => item.isMine == true);
             openMines.forEach(item => openCell(item));
             for (let i = 0; i < gameField.length; i++) {
@@ -284,7 +292,8 @@
                     cellsMines[i].isBlock = true;
                     cellsMines[i].isOpen = true;
                 }
-                alert("Вы выиграли");
+                //Открывается победное окно
+                game_window_modal_background.style.display = 'flex';
             }
         }
 

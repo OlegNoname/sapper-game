@@ -11,11 +11,8 @@
 
 <body>
     <div class="content">
-        <!-- <div class="content-head">
-            Шапка
-        </div> -->
         <div class="content-body">
-            <div id="modal">
+            <div id="content_modal_background">
                 <div id="start_menu">
                     <input class="input-text" placeholder="Введите имя" type="text" name="user_name"
                         id="user_name_input">
@@ -23,6 +20,12 @@
                 </div>
             </div>
             <div id="game_window" width=''>
+                <div id="game_window_modal_background">
+                    <div id="game_window_pop_up">
+                        <p class="pop_up_header">Победа!</p>
+                        <button class="button" id="game_over_btn">Продолжить</button>
+                    </div>
+                </div>
                 <div id="menu">
                     <input class="input-text" type="text" readonly name="user_name_output" id="user_name_output">
                     <select class="select" name="difficulty-level" id="difficulty_level">
@@ -38,7 +41,6 @@
                 <div id="field">
                     <div class="cells">
                         <!-- Здесь генерировать строки и в них клетки -->
-                        <!-- ТЕСТОВЫЙ ПРИМЕР, ДЛЯ ОТРАБОТКИ СКРИПТОВ РИСУЙТЕ ПОЛЕ САМИ -->
                     </div>
 
 
@@ -49,7 +51,6 @@
             </div>
         </div>
     </div>
-
     <script src="js/index.js"></script>
 </body>
 
