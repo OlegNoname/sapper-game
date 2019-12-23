@@ -1,0 +1,135 @@
+body {
+	background-color: #f1f1f1;
+}
+
+.chat::-webkit-scrollbar { width: 0.125rem; }
+.chat::-webkit-scrollbar-thumb { background: #CFD8DC; }
+.chat::-webkit-scrollbar-thumb:hover { background: #B0BEC5; }
+
+.chat {
+	height: 500px;
+	width: 300px ;
+	background-color: white;
+	overflow: hidden;
+  overflow-y:scroll;
+}
+
+ul {
+	padding-top: 5px;
+}
+.main {
+	min-height: 1rem;
+	width: 300px;
+}
+
+.from_me {
+
+	width: 200px;
+	border-radius: 8px 8px;
+	color: white;
+	background-color: CornflowerBlue;
+	min-height: 1rem;
+	display:block;
+	overflow: visible;
+	margin-bottom: 0.7rem;
+	margin-left: 40px;
+	word-wrap: break-word;
+	padding: 0.4rem;
+	font-family: 'Lato', sans-serif;
+	transition: 500ms;
+}
+.from_another {
+
+	width: 200px;
+	border-radius: 8px 8px;
+	color: DarkBlue;
+	background-color: PowderBlue;
+	min-height: 1rem;
+	display:block;
+	overflow: visible;
+	margin-bottom: 1.1rem;
+	margin-left: -30px;
+	word-wrap: break-word;
+	padding: 0.4rem;
+	font-family: 'Lato', sans-serif;
+	transition: 500ms;
+}
+
+.sendBox {
+	position: absolute;
+	top: 500px;
+	width: 300px;
+	background: white;
+}
+
+.sendBox input {
+	font-family: 'Lato', sans-serif;
+	font-size: 0.875rem;
+	display: block;
+	width: 70%;
+	height: 45px;
+	border: none;
+	padding: 0.75rem 0.75rem;
+	line-height: 1.25rem;
+	border-top: 0.125rem solid #ECEFF1;
+	transition: 0.5s ease-in-out;
+	margin-top: 5px;
+}
+form {
+	display:flex;
+	height: 35px;
+	justify-content:space-between
+	
+}
+#send {
+	margin-top: 5px;
+	background-color: MediumSlateBlue;
+	color: white;
+	height: 20px;
+	width: 85px;
+	padding-bottom:30px;
+	border-radius: 8px 8px;
+	margin-right: 2px;
+	font-family: 'Lato', sans-serif;
+}
+
+.myName {
+	font-size: 0.75rem;
+	color: #B0BEC5;
+	margin-left: 240px
+	
+}
+.anotherName {
+	font-size: 0.75rem;
+	color: #B0BEC5;
+	margin-left: -27px
+	
+}
+/*стили для собеседника, в итоге не потребуются*/
+.sendBox1 {
+	position: absolute;
+	top: 500px;
+	width: 300px;
+	background: white;
+	margin-top: -400px;
+}
+.sendBox1 input {
+	font-family: 'Lato', sans-serif;
+	font-size: 0.875rem;
+	display: block;
+	width: 70%;
+	height: 45px;
+	border: none;
+	padding: 0.75rem 0.75rem;
+	line-height: 1.25rem;
+	border-top: 0.125rem solid #ECEFF1;
+	transition: 0.5s ease-in-out;
+	margin-top: 5px;
+}
+.friend_example {
+	margin-left: 450px;
+	width: 300px;
+	height: 100px;
+	background-color: azure;
+	margin-top: -450px;
+}
