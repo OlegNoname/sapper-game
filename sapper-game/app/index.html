@@ -7,9 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sapper</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
+    <!-- <div class="friend_example">Эмуляция отправки сообщения от собеседника
+        <div class="sendBox1">
+            <form>
+                <input type="text" id="message_from" placeholder="Введите сообщение...">
+                <input type="button" id="send2" value="Отправить">
+            </form>
+        </div>
+    </div> -->
     <div class="content">
         <div class="content-body">
             <div id="content_modal_background">
@@ -46,12 +56,22 @@
 
                 </div>
             </div>
-            <div class="chat">
-                Чат
+            <div class="chat_main">
+                <div class="chat">
+                </div>
+                <div class="sendBox">
+                    <form>
+                        <input type="text" id="message_input" placeholder="Введите сообщение...">
+                        <input type="button" id="send" value="Отправить">
+                    </form>
+                </div>
             </div>
+
+
         </div>
     </div>
     <script src="js/index.js"></script>
+
 </body>
 
 </html>

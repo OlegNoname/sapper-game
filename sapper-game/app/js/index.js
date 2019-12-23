@@ -2,7 +2,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         let
             cells = document.querySelector('.cells'),
-            chat = document.querySelector('.chat'),
+            chat = document.querySelector('.chat_main'),
             gameWindowIsWide = false,
             userName = '';
         //Обработчик нажатия ПКМ на любую клетку внутри игрового поля
@@ -32,7 +32,7 @@
             user_name_output.value = userName;
             start_menu.style.display = 'none';
             content_modal_background.style.display = 'none';
-            chat.style.display = 'block';
+            chat.style.display = 'flex';
             game_window.style.display = 'flex';
         })
 

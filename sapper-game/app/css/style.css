@@ -139,13 +139,12 @@ body, input, select{
 .game_window_wide {
   /* width: 530px !important; */
 }
-.chat {
-  display: none;
-  width: 350px;
-  height: 700px;
-  /* margin: 0 auto; */
-  background: rgb(83, 167, 216);
-}
+/* .chat { */
+  /* display: none; */
+  /* width: 350px; */
+  /* height: 700px; */
+  /* background: rgb(83, 167, 216); */
+/* } */
 
 #field {
   width: 100%;

@@ -104,7 +104,3 @@ function CheckMes() {//проверка пустого сообщения от �
 	return false;
 	else return true;
 }
-
-
- 
- 

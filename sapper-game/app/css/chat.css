@@ -1,7 +1,3 @@
-body {
-  background-color: #f1f1f1;
-}
-
 .chat::-webkit-scrollbar {
   width: 0.125rem;
 }
@@ -13,11 +9,11 @@ body {
 }
 
 .chat {
-  height: 500px;
-  width: 300px;
   background-color: white;
   overflow: hidden;
   overflow-y: scroll;
+  height: 90%;
+  border-radius: 5px 5px 0 0;
 }
 
 ul {
@@ -27,7 +23,12 @@ ul {
   min-height: 1rem;
   width: 300px;
 }
-
+.chat_main {
+  display: none;
+  flex-direction: column;
+  width: 350px;
+  height: 700px;
+}
 .from_me {
   width: 200px;
   border-radius: 8px 8px;
@@ -60,18 +61,18 @@ ul {
 }
 
 .sendBox {
-  position: absolute;
-  top: 500px;
-  width: 300px;
+  height: 10%;
+  width: 100%;
   background: white;
+  border-radius: 0 0 5px 5px;
 }
 
 .sendBox input {
   font-family: "Lato", sans-serif;
   font-size: 0.875rem;
   display: block;
-  width: 70%;
-  height: 45px;
+  width: 60%;
+  /* height: 45px; */
   border: none;
   padding: 0.75rem 0.75rem;
   line-height: 1.25rem;
@@ -81,19 +82,22 @@ ul {
 }
 form {
   display: flex;
-  height: 35px;
-  justify-content: space-between;
+  height: 100%;
+  /* height: 35px; */
+  justify-content: space-around;
+  align-items: center;
 }
 #send {
   margin-top: 5px;
   background-color: MediumSlateBlue;
   color: white;
-  height: 20px;
-  width: 85px;
+  height: 15px;
+  width: 25%;
   padding-bottom: 30px;
   border-radius: 8px 8px;
   margin-right: 2px;
   font-family: "Lato", sans-serif;
+  text-align: center;
 }
 
 .myName {
@@ -106,8 +110,9 @@ form {
   color: #b0bec5;
   margin-left: -27px;
 }
+
 /*стили для собеседника, в итоге не потребуются*/
-.sendBox1 {
+/* .sendBox1 {
   position: absolute;
   top: 500px;
   width: 300px;
@@ -133,4 +138,4 @@ form {
   height: 100px;
   background-color: azure;
   margin-top: -450px;
-}
+} */
