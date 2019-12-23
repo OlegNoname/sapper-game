@@ -1,6 +1,5 @@
 var users_data = {//все юзеры, в данном случае "Я" и "Собеседник" взято для примера
-		users: ["Артем", "Олег","Женя", "Кирилл","Илья", "Никита"],
-		points: ["200","300","200","300","200","300"]
+		users: ["Я", "Собеседник"]
 }
 
 
@@ -36,7 +35,7 @@ window.onload=function(){
 			
 			
 		let mes1 = document.createElement('li');
-			if (user=="Артем")//частично реализована проверка на юзеров
+			if (user=="Я")//частично реализована проверка на юзеров
 				{
 					mes1.className="from_me"
 					nameUser.className = "myName"
@@ -75,7 +74,7 @@ function NewMessage2() {//функция отрисовки отправленн
 		nameUser.innerHTML=user;
 		main.appendChild(nameUser);
 		let mes1 = document.createElement('li');
-			if (user!="Олег")//частично реализована проверка на юзеров
+			if (user=="Собеседник")//частично реализована проверка на юзеров
 				{
 					mes1.className="from_another"
 					nameUser.className = "anotherName"
