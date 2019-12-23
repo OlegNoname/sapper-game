@@ -105,3 +105,130 @@ function CheckMes() {//проверка пустого сообщения от �
 	return false;
 	else return true;
 }
+
+function login(){//Функция логина на сервер
+	        let Nickname = user_name_input.value;
+        	fetch('../../api/users', {
+        		method: 'POST',
+        		headers:{'content-type': 'application/json; charset=UTF-8'},
+        		body:JSON.stringify({"name":Nickname}),
+            }).then(res =>{
+            	if (res.status === 200){
+            	console.log('Логин пользователя '+Nickname+' прошёл успешно!');	
+            } else if (res.status === 400) {
+            	throw new Error("Пользователь с таким именем уже существует")
+            }
+            }).catch(e=> alert(e));
+        }  
+
+
+ function exit(){//Функция выхода с сервера
+           fetch('../../api/users', {
+                   		method: 'DELETE',
+                   		headers:{'content-type': 'application/json; charset=UTF-8'},
+                       }).then(res =>{
+                       	if (res.status === 200){
+                       	console.log('Выход прошёл успешно!');	
+                       } else if (res.status === 400) {
+                       	throw new Error("Ошибка выхода!")
+                       }
+                       }).catch(e=> alert(e));
+            }
+
+
+ function user_check(){//Функция выводящая в консоль список залогиненых пользователей
+            fetch('../../api/users')
+            .then(res =>{
+            if (res.status === 200){
+            console.log('Запрос списка пользователей прошёл успешно!');
+            return res.json();
+           } else if (res.status === 400) {
+            throw new Error("Ошибка запроса списка пользователей!")
+            }
+            })
+            .then(data=>{
+            	console.log(data)
+            })
+            .catch(e=> alert(e));
+    }    
+
+
+ function start_game(){//Функция начала игры
+           fetch('../../api/records', {
+        		method: 'POST',
+        		headers:{'content-type': 'application/json; charset=UTF-8'},
+        		body:JSON.stringify({"game":"Сапёр"}),
+            }).then(res =>{
+            	if (res.status === 200){
+            	console.log('Информация о начале игры успешно отправлена!');
+            	return res.json();	
+            } else if (res.status === 400) {
+            	throw new Error("Не удалось отправить информацию о начале игры!")
+            }
+            })
+            .then(data=>{
+            	console.log(data);
+            	id_game = data.id;
+            })
+            .catch(e=> alert(e));
+        }  
+
+ function record_list(){//Функция получения списка рекордов(не работает)
+           fetch('../../api/records').then(res =>{
+            	if (res.status === 200){
+            	console.log('Список рекордов успешно получен!');
+            	return res.json();	
+            } else if (res.status === 400) {
+            	throw new Error("Не удалось получить список рекордов!")
+            }
+            })
+           .then(data=>{
+            	console.log(data);
+            })
+           .catch(e=> alert(e));
+        }  
+
+ function end_game(){//Функция завершения игры
+
+           fetch('../../api/records', {
+        		method: 'PATCH',
+        		headers:{'content-type': 'application/json; charset=UTF-8'},
+        		body:JSON.stringify({"id":id_game,"score":123}),
+            }).then(res =>{
+            	if (res.status === 200){
+            	console.log('Информация о завершении игры успешно отправлена!');	
+            } else if (res.status === 400) {
+            	throw new Error("Не удалось отправить информацию о завершении игры!")
+            }
+            }).catch(e=> alert(e));
+        }  
+ function send_message(){//Функция отправления сообщения
+ 	    let message = message_input.value;
+           fetch('../../api/messages', {
+        		method: 'POST',
+        		headers:{'content-type': 'application/json; charset=UTF-8'},
+        		body:JSON.stringify({"text":message}),
+            }).then(res =>{
+            	if (res.status === 200){
+            	console.log('Сообщение успешно отправлено!');	
+            } else if (res.status === 400) {
+            	throw new Error("Не удалось отправить сообщение!")
+            }
+            }).catch(e=> alert(e));
+        } 
+
+  function recive_messages(){//Функция получения массива сообщений
+           fetch('../../api/messages')
+           .then(res =>{
+            	if (res.status === 200){
+            	console.log('Массив сообщений успешно получен!');
+            	return res.json();	
+            } else if (res.status === 400) {
+            	throw new Error("Не удалось получить массив сообщений!")
+            }
+            })
+            .then(data=>{
+            	console.log(data);
+            })
+            .catch(e=> alert(e));
+        }    

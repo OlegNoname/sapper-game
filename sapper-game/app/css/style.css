@@ -316,6 +316,61 @@ table {
 .tableList::-webkit-scrollbar-thumb:hover {
   background: #b0bec5;
 }
+
+.exit_butt{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
+.check_butt{
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
+.start_butt{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
+.record_butt{
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
+.end_butt{
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
+.messages_butt{
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+}
 /* @media screen and (max-device-width: 1400px) {
   .content {
     width: 1200px;

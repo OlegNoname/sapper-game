@@ -12,6 +12,12 @@
 </head>
 
 <body>
+    <button class="exit_butt" onclick="exit()">Выйти</button>
+    <button class="check_butt" onclick="user_check()">Узнать список пользователей онлайн</button>
+    <button class="start_butt" onclick="start_game()">Начать игру</button>
+    <button class="end_butt" onclick="end_game()">Завершить игру</button>
+    <button class="record_butt" onclick="record_list()">Узнать рекорды</button>
+    <button class="messages_butt" onclick="recive_messages()">Получить массив сообщений</button>
     <!-- <div class="friend_example">Эмуляция отправки сообщения от собеседника
         <div class="sendBox1">
             <form>
@@ -26,7 +32,7 @@
                 <div id="start_menu">
                     <input class="input-text" placeholder="Введите имя" type="text" name="user_name"
                         id="user_name_input">
-                    <button class="button" id="start_btn">Начать</button>
+                    <button class="button" id="start_btn" onclick="login()">Начать</button>
                 </div>
             </div>
             <div id="game_window" width=''>
@@ -62,7 +68,7 @@
                 <div class="sendBox">
                     <form>
                         <input type="text" id="message_input" placeholder="Введите сообщение...">
-                        <input type="button" id="send" value="Отправить">
+                        <input type="button" id="send" onclick="send_message()" value="Отправить">
                     </form>
                 </div>
             </div>
