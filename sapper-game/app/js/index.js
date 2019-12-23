@@ -148,9 +148,7 @@
                 let cellInArr = gameField.filter(item => item.x == x && item.y == y)[0];
                 if (!cellInArr.isOpen && !cellInArr.isBlock) {
                     if (cellInArr.isMine)
-						{
                         youLose(cellInArr);
-						}
                     else if (cellInArr.minesAround == 0) {
                         emptyField(cellInArr);
                         youWin();
@@ -159,9 +157,7 @@
                     else {
                         openCell(cellInArr);
                         youWin();
-						
                     }
-					
                 }
             }
         }
@@ -251,7 +247,6 @@
                 gameField[i].isBlock = true;
                 gameField[i].isOpen = true;
             }
-			setTimeout(tableLid(), 2000);
         }
 
         //Функция обработки нажатия на пустое поле (вокруг этой ячейки нет мин)
@@ -299,7 +294,6 @@
                 }
                 //Открывается победное окно
                 game_window_modal_background.style.display = 'flex';
-				setTimeout(tableLid(), 2000);
             }
         }
 
@@ -326,97 +320,5 @@
             }
 
         }
-		function tableLid() {
-			BubbleSort();
-			var gameWindow = document.getElementById("game_window_modal_background");
-			var nextTable = document.createElement('div');
-			nextTable.className = "windowtable";
-			gameWindow.appendChild(nextTable);
-			
-			var nameTable = document.createElement('div');
-			nameTable.className = "nameTable";
-			gameWindow.appendChild(nameTable);
-
-			nameTable.innerHTML="Таблица лидеров:"
-			var tableList = document.createElement('div');
-			tableList.className = "tableList";
-			nextTable.appendChild(tableList);
-			var tableLid = document.createElement('table')
-			var stroka = document.createElement('tr');
-			for (let i =0;i<3;i++)
-				{
-					let NumberUser = "№";
-					let NameUser = "Имя пользователя";
-					let Ochki = "Счёт";
-					var stolb = document.createElement('th');
-					if (i==0)
-						{
-						stolb.id = "NumberUser";
-						stolb.innerHTML=NumberUser;
-						}
-					if (i==1)
-						{
-						stolb.id = "NameUser";
-						stolb.innerHTML=NameUser;
-						}
-					if (i==2)
-						{
-						stolb.id = "Ochki";
-						stolb.innerHTML=Ochki;
-						}
-					stroka.appendChild(stolb);
-				}
-			tableLid.appendChild(stroka);
-			var count=0;
-			
-			for (let i =0;i<users_data.users.length;i++)
-				{
-					count++;
-					var stroka2 = document.createElement('tr');
-					for (let j =0;j<3;j++)
-						{
-							var stolbUser = document.createElement('th');
-							if (j==0)
-								{
-									stolbUser.innerHTML=count;
-								}
-							if (j==1)
-								{
-									stolbUser.innerHTML=users_data.users[i];
-								}
-							if (j==2)
-								{
-									stolbUser.innerHTML=users_data.points[i];
-								}
-							stroka2.appendChild(stolbUser);
-						}
-					tableLid.appendChild(stroka2);
-				}
-			
-			
-			tableList.appendChild(tableLid);
-		}
-	function BubbleSort()//Метод сортировки пузырьком
-{ 
-    for (let i =0;i<users_data.users.length;i++)
-        {
-         for (let j =0;j<users_data.users.length;j++)  
-             {
-                 if (users_data.points[j]<users_data.points[j+1])
-                     ObmenMest(j,j+1)
-             }
-        }
-}
-
-function ObmenMest(first,second)//Метод, позволяющий поменять два элемента массива местами
-{ 
-    let any = users_data.points[first];
-    users_data.points[first]=users_data.points[second];
-    users_data.points[second]=any;
-	
-	let any2 = users_data.users[first];
-    users_data.users[first]=users_data.users[second];
-    users_data.users[second]=any2;
-}
     }, false);
 }());
