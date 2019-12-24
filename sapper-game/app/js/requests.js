@@ -4,6 +4,7 @@ var users_data = {//все юзеры, в данном случае "Я" и "С�
 }
 
 let id_game = ''//переменная хранящая id текущей игровой сессии
+let mess_mass = {}//Массив последних 5 сообщений
 
 function requests() {
 
@@ -15,9 +16,7 @@ function requests() {
 
 	function NewMessage() {//функция отрисовки отправленного своего сообщения в чате
 		if (CheckMes()) {
-			//Здесь должно быть что то другое
 			user = users_data.users[0];
-
 			var message = document.querySelector('#message_input');
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
@@ -31,7 +30,7 @@ function requests() {
 			let main = document.createElement('div');
 			main.className = "main"
 			var nameUser = document.createElement('span');
-			nameUser.innerHTML = user;
+			nameUser.innerHTML = user_name_output.value;
 			main.appendChild(nameUser);
 
 
@@ -53,17 +52,37 @@ function requests() {
 		}
 	}
 
+     function check2(mess,nick){
+     	     user = nick;
+			var message = mess;
+			var window1 = document.querySelector('ul');
+			let main = document.createElement('div');
+			main.className = "main"
+			var nameUser = document.createElement('span');
+			nameUser.innerHTML = user;
+			main.appendChild(nameUser);
+			let mes1 = document.createElement('li');
+			mes1.className = "from_another"
+			nameUser.className = "anotherName"
+			mes1.innerHTML = message.value;
 
-	function NewMessage2() {//функция отрисовки отправленного чужого сообщения в чате, функция написана под этот пример, нужно будет реализовать проверку на юзеров, и соединить эти две функции в одну
+			main.appendChild(mes1);
+			window1.appendChild(main);
+			message.value = "";
+
+			var chat = document.querySelector('.chat');
+			chat.scrollTop = 9999;
+     }
+
+	function NewMessage2(mess,nick) {//функция отрисовки отправленного чужого сообщения в чате, функция написана под этот пример, нужно будет реализовать проверку на юзеров, и соединить эти две функции в одну
 		if (CheckMes2()) {
-			//Здесь должно быть что то другое
-			user = users_data.users[1];  
-
-			var message = document.querySelector('#message_from');
+			user = nick;
+			var message = mess;
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
 				var chat = document.querySelector('div');
 				chat.appendChild(window1);
+
 			}
 			else {
 				var window1 = document.querySelector('ul');
@@ -74,11 +93,11 @@ function requests() {
 			nameUser.innerHTML = user;
 			main.appendChild(nameUser);
 			let mes1 = document.createElement('li');
-			// if (user != "Олег")//частично реализована проверка на юзеров
-			// {
-				mes1.classList.add("from_another");
-				nameUser.classList.add("anotherName");
-			// }
+			if (user != "Олег")//частично реализована проверка на юзеров
+			{
+				mes1.className = "from_another"
+				nameUser.className = "anotherName"
+			}
 			mes1.innerHTML = message.value;
 
 			main.appendChild(mes1);
@@ -219,6 +238,15 @@ function send_message() {//Функция отправления сообщен�
 	}).catch(e => alert(e));
 }
 
+function check_new_mess(new_mess_mass){
+	for (let i = 0; i < 5;i++){
+		if (!(new_mess_mass[i].time === mess_mass[0].time) && !(new_mess_mass[i].time === mess_mass[1].time) && !(new_mess_mass[i].time === mess_mass[2].time) && !(new_mess_mass[i].time === mess_mass[3].time) && !(new_mess_mass[i].time === mess_mass[4].time) && !(new_mess_mass[i].isMine)){
+        /* check2(new_mess_mass[i].text,new_mess_mass[i].user);*/
+        alert(new_mess_mass[i].text+"  "+new_mess_mass[i].user);
+		} else {alert("It's mine!")}
+	}
+}
+
 function recive_messages() {//Функция получения массива сообщений
 	fetch('../../api/messages')
 		.then(res => {
@@ -229,8 +257,12 @@ function recive_messages() {//Функция получения массива �
 				throw new Error("Не удалось получить массив сообщений!")
 			}
 		})
-		.then(data => {
+		.then(data => { 
 			console.log(data);
+			if (!(id_game ==="")) {
+			check_new_mess(data);
+			}
+			mess_mass = data;
 		})
 		.catch(e => alert(e));
 }    

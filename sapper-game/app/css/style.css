@@ -6,10 +6,8 @@ body {
   background: hsl(203, 82%, 85%);
 }
 
-body,
-input,
-select {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+body, input, select{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .button {
   border-radius: 4px;
@@ -33,6 +31,7 @@ select {
   padding: 5px;
 }
 .content {
+  width: 1200px;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -63,7 +62,7 @@ select {
   flex-direction: column;
   justify-content: center;
 }
-#game_window_modal_background {
+#game_window_modal_background{
   position: absolute;
   left: 0;
   top: 0;
@@ -77,17 +76,17 @@ select {
   align-items: center;
   text-align: center;
 }
-.pop_up_header {
+.pop_up_header{
   font-size: 50px;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 1px 1px 1px #000000;
-  margin-top: -180px;
-}
-#lose, #win{
-  display: none;
+	margin-top: -180px;
+  
 }
 #start_menu {
+  width: 250px;
+  height: 200px;
   background: linear-gradient(to top right, #2e3192, #1babff);
   /* border: 2px solid #00489b79; */
   border-radius: 5px;
@@ -99,6 +98,8 @@ select {
   opacity: 0.9;
 }
 #user_name_input {
+  width: 150px;
+  height: 40px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 18px;
@@ -108,19 +109,26 @@ select {
   color: #2e3192;
 }
 #start_btn {
+  width: 100px;
+  height: 40px;
   background: none;
   border: 1px solid #ffffff;
   color: #ffffff;
   font-size: 18px;
 }
 #user_name_output {
+  width: 100px;
 }
 #time_counter {
+  width: 80px;
 }
 #bomb_counter {
+  width: 60px;
 }
 #game_window {
   display: none;
+  width: 630px;
+  height: 700px;
   /* margin: 0 auto; */
   margin-right: 50px;
   flex-direction: column;
@@ -132,10 +140,10 @@ select {
   /* width: 530px !important; */
 }
 /* .chat { */
-/* display: none; */
-/* width: 350px; */
-/* height: 700px; */
-/* background: rgb(83, 167, 216); */
+  /* display: none; */
+  /* width: 350px; */
+  /* height: 700px; */
+  /* background: rgb(83, 167, 216); */
 /* } */
 
 #field {
@@ -214,6 +222,8 @@ select {
 }
 .cell_number_2::before {
   content: "2";
+  /* color: hsla(229, 100%, 33%, 0.548); */
+
   color: hsla(219, 100%, 46%, 0.781);
 }
 .cell_number_3::before {
@@ -242,52 +252,61 @@ select {
   content: "8";
   color: hsla(4, 98%, 33%, 0.911);
 }
-
 .tableList {
-  background-color: white;
-  position: absolute;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  overflow-y: scroll;
-  overflow-x: hidden;
-  margin-left: -45px;
-  margin-top: 10px;
+	min-height: 193px;
+	width: 400px;
+	background-color: white;
+	position: absolute;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	opacity: 0.85;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	margin-left: -45px;
+	margin-top: 10px;
 }
 .windowtable {
-  /*	background-color: white;*/
-  position: absolute;
-  margin-left: 95px;
-  border-radius: 4px 4px;
-  margin-top: 220px;
+	min-height: 300px;
+	width: 500px;
+/*	background-color: white;*/
+	position: absolute;
+	opacity: 0.8;
+	margin-left: 95px;
+	border-radius: 4px 4px;
+	margin-top: 220px
 }
 .nameTable {
-  /*color: #127bf379;*/
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 4px 4px;
-  position: absolute;
-  font-size: 18px;
-  text-align: center;
-  font-weight: 600;
-  opacity: 0.7;
-  /*	margin-left: 5px;*/
-  margin-top: 40px;
+	min-height: 40px;
+	width: 250px;
+/*color: #127bf379;*/
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 4px 4px;
+	position: absolute;
+	font-size: 18px;
+	text-align: center;
+	font-weight: 600;
+	opacity: 0.7;
+/*	margin-left: 5px;*/
+	margin-top: 40px;
 }
-table {
-  position: absolute;
-  width: 100%; /* Ширина таблицы */
-  border: 4px black; /* Рамка вокруг таблицы */
-  border-collapse: collapse; /* Отображать только одинарные линии */
-}
-th {
-  text-align: left; /* Выравнивание по левому краю */
-  padding: 5px; /* Поля вокруг содержимого ячеек */
-  border: 1px solid black; /* Граница вокруг ячеек */
-  height: 10px;
-}
-td {
-  padding: 5px; /* Поля вокруг содержимого ячеек */
-  border: 1px solid black; /* Граница вокруг ячеек */
-}
+table { 
+    position: absolute;
+    width: 100%; /* Ширина таблицы */
+    border: 4px  black; /* Рамка вокруг таблицы */
+    border-collapse: collapse; /* Отображать только одинарные линии */
+	
+  	
+   }
+   th { 
+    text-align: left; /* Выравнивание по левому краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+	height: 10px;
+   }
+   td { 
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+   }
 .tableList::-webkit-scrollbar {
   width: 0.3rem;
 }
@@ -298,7 +317,7 @@ td {
   background: #b0bec5;
 }
 
-.exit_butt {
+.exit_butt{
   position: absolute;
   top: 10%;
   left: 10%;
@@ -307,7 +326,7 @@ td {
   width: 150px;
   height: 80px;
 }
-.check_butt {
+.check_butt{
   position: absolute;
   top: 20%;
   left: 10%;
@@ -316,7 +335,7 @@ td {
   width: 150px;
   height: 80px;
 }
-.start_butt {
+.start_butt{
   position: absolute;
   top: 30%;
   left: 10%;
@@ -325,7 +344,7 @@ td {
   width: 150px;
   height: 80px;
 }
-.record_butt {
+.record_butt{
   position: absolute;
   top: 40%;
   left: 10%;
@@ -334,7 +353,7 @@ td {
   width: 150px;
   height: 80px;
 }
-.end_butt {
+.end_butt{
   position: absolute;
   top: 50%;
   left: 10%;
@@ -343,7 +362,7 @@ td {
   width: 150px;
   height: 80px;
 }
-.messages_butt {
+.messages_butt{
   position: absolute;
   top: 60%;
   left: 10%;
@@ -352,191 +371,29 @@ td {
   width: 150px;
   height: 80px;
 }
-@media screen and (min-device-width: 1400px) {
-  .content {
-    width: 1400px;
-  }
-  #start_menu {
-    width: 290px;
-    height: 230px;
-  }
-  #user_name_input {
-    width: 175px;
-    height: 45px;
-  }
-  #start_btn {
-    width: 115px;
-    height: 45px;
-  }
-  #user_name_output {
-    width: 115px;
-  }
-  #time_counter {
-    width: 90px;
-  }
-  #bomb_counter {
-    width: 70px;
-  }
-  #game_window {
-    width: 730px;
-    height: 810px;
-  }
-  .tableList {
-    min-height: 200px;
-    width: 420px;
-  }
-  .windowtable {
-    min-height: 20px;
-    width: 520px;
-  }
-  .nameTable {
-    min-height: 50px;
-    width: 300px;
-  }
-
-  /* ЧАТ */
-  .main {
-    min-height: 1rem;
-    width: 330px;
-  }
-  .chat_main {
-    width: 405px;
-    height: 810px;
-  }
-  .from_me {
-    width: 220px;
-  }
-  .from_another {
-    width: 220px;
-  }
-  .myName {
-    margin-left: 240px;
-  }
-}
-@media screen and (max-device-width: 1400px) {
+/* @media screen and (max-device-width: 1400px) {
   .content {
     width: 1200px;
   }
-  #start_menu {
-    width: 250px;
-    height: 200px;
-  }
-  #user_name_input {
-    width: 150px;
-    height: 40px;
-  }
-  #start_btn {
-    width: 100px;
-    height: 40px;
-  }
   #user_name_output {
-    width: 100px;
-  }
-  #time_counter {
     width: 80px;
   }
-  #bomb_counter {
-    width: 60px;
-  }
-  #game_window {
-    /* width: 630px;
-    height: 700px; */
-    width: 500px;
-    height: 550px;
-  }
-  .tableList {
-    min-height: 193px;
-    width: 400px;
-  }
-  .windowtable {
-    min-height: 300px;
-    width: 500px;
-  }
-  .nameTable {
-    min-height: 40px;
-    width: 250px;
-  }
-
-  /* ЧАТ */
-  .main {
-    min-height: 1rem;
-    width: 200px;
-  }
-  .chat_main {
-    width: 275px;
-    height: 550px;
-  }
-  .from_me {
-    width: 150px;
-  }
-  .from_another {
-    width: 150px;
-  }
-  .myName {
-    margin-left: 180px;
-  }
-  #send {
-    height: 10px;
-    font-size: 10px;
-  }
-}
-@media screen and (max-device-width: 1200px) {
-  .content {
-    width: 1000px;
-  }
-  #start_menu {
-    width: 250px;
-    height: 200px;
-  }
-  #user_name_input {
-    width: 150px;
-    height: 40px;
-  }
-  #start_btn {
-    width: 100px;
-    height: 40px;
-  }
-  #user_name_output {
-    width: 90px;
-  }
   #time_counter {
-    width: 70px;
-  }
-  #bomb_counter {
     width: 50px;
   }
+  #bomb_counter {
+    width: 40px;
+  }
   #game_window {
-    width: 540px;
-    height: 600px;
+    width: 450px;
+    height: 500px;
   }
-  .tableList {
-    min-height: 193px;
-    width: 300px;
-  }
-  .windowtable {
-    min-height: 300px;
-    width: 400px;
-  }
-  .nameTable {
-    min-height: 40px;
+  .chat {
     width: 250px;
+    height: 500px;
   }
-  /* ЧАТ */
-  .main {
-    min-height: 1rem;
-    width: 260px;
-  }
-  .chat_main {
-    width: 300x;
-    height: 600px;
-  }
-  .from_me {
-    width: 180px;
-  }
-  .from_another {
-    width: 180px;
-  }
-  .myName {
-    margin-left: 180px;
-  }
-}
+} */
+
+/* @media (orientation: portrait) {
+
+} */

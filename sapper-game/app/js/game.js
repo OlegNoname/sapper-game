@@ -16,9 +16,6 @@ function game() {
     //Обработчик нажатия на кнопку после завершения игры
     game_over_btn.addEventListener('click', () => {
         game_window_modal_background.style.display = 'none';
-        lose.style.display = 'none';
-        win.style.display = 'none';
-        newGame();
     })
     //Обработчик нажатия ЛКМ на любую клетку внутри игрового поля
     cells.addEventListener('click', (event) => {
@@ -238,10 +235,7 @@ function game() {
             gameField[i].isBlock = true;
             gameField[i].isOpen = true;
         }
-        game_window_modal_background.style.display = 'flex';
-        lose.style.display = 'block';
-        //Вызов таблицы лидеров
-        // setTimeout(tableLid(), 2000);
+        setTimeout(tableLid(), 2000);
     }
 
     //Функция обработки нажатия на пустое поле (вокруг этой ячейки нет мин)
@@ -289,9 +283,7 @@ function game() {
             }
             //Открывается победное окно
             game_window_modal_background.style.display = 'flex';
-            win.style.display = 'block';
-            //Вызов таблицы лидеров
-            // setTimeout(tableLid(), 2000);
+            setTimeout(tableLid(), 2000);
         }
     }
 
