@@ -4,6 +4,8 @@ var users_data = {//все юзеры, в данном случае "Я" и "С�
 }
 
 let id_game = ''//переменная хранящая id текущей игровой сессии
+let mess_mass = {}//Массив последних 5 сообщений
+let flag1 = 0;//Флаг, нужный для считывания сообщений
 
 function requests() {
 
@@ -15,9 +17,7 @@ function requests() {
 
 	function NewMessage() {//функция отрисовки отправленного своего сообщения в чате
 		if (CheckMes()) {
-			//Здесь должно быть что то другое
 			user = users_data.users[0];
-
 			var message = document.querySelector('#message_input');
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
@@ -31,7 +31,7 @@ function requests() {
 			let main = document.createElement('div');
 			main.className = "main"
 			var nameUser = document.createElement('span');
-			nameUser.innerHTML = user;
+			nameUser.innerHTML = user_name_output.value;
 			main.appendChild(nameUser);
 
 
@@ -54,16 +54,16 @@ function requests() {
 	}
 
 
-	function NewMessage2() {//функция отрисовки отправленного чужого сообщения в чате, функция написана под этот пример, нужно будет реализовать проверку на юзеров, и соединить эти две функции в одну
-		if (CheckMes2()) {
-			//Здесь должно быть что то другое
-			user = users_data.users[1];  
+}
 
-			var message = document.querySelector('#message_from');
+function NewMessage2(mess,nick) {//функция отрисовки отправленного чужого сообщения в чате, функция написана под этот пример, нужно будет реализовать проверку на юзеров, и соединить эти две функции в одну
+			user = nick;
+			var message = mess;
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
-				var chat = document.querySelector('div');
+				var chat = document.querySelector('.chat');
 				chat.appendChild(window1);
+
 			}
 			else {
 				var window1 = document.querySelector('ul');
@@ -74,12 +74,9 @@ function requests() {
 			nameUser.innerHTML = user;
 			main.appendChild(nameUser);
 			let mes1 = document.createElement('li');
-			// if (user != "Олег")//частично реализована проверка на юзеров
-			// {
-				mes1.classList.add("from_another");
-				nameUser.classList.add("anotherName");
-			// }
-			mes1.innerHTML = message.value;
+			mes1.className = "from_another"
+			nameUser.className = "anotherName"
+			mes1.innerHTML = message;
 
 			main.appendChild(mes1);
 			window1.appendChild(main);
@@ -87,10 +84,10 @@ function requests() {
 
 			var chat = document.querySelector('.chat');
 			chat.scrollTop = 9999;
-		}
+		
 	}
 
-}
+
 function CheckMes2() {//проверка своего пустого сообщения
 	var message = document.querySelector('#message_from');
 	if (message.value == "")
@@ -115,6 +112,7 @@ function login(callback) {
 		body: JSON.stringify({ "name": Nickname }),
 	}).then(res => {
 		if (res.status === 200) {
+			setInterval(recive_messages,500);
 			console.log('Логин пользователя ' + Nickname + ' прошёл успешно!');
 			//Скрытие начального окна и появление игрового поля
 			callback()
@@ -219,18 +217,31 @@ function send_message() {//Функция отправления сообщен�
 	}).catch(e => alert(e));
 }
 
+function check_new_mess(new_mess_mass){
+	for (let i = 0; i < 5;i++){
+		if (!(new_mess_mass[i].time === mess_mass[0].time) && !(new_mess_mass[i].time === mess_mass[1].time) && !(new_mess_mass[i].time === mess_mass[2].time) && !(new_mess_mass[i].time === mess_mass[3].time) && !(new_mess_mass[i].time === mess_mass[4].time) && !(new_mess_mass[i].isMine)){
+        NewMessage2(new_mess_mass[i].text,new_mess_mass[i].user);
+		} 
+	}
+}
+
 function recive_messages() {//Функция получения массива сообщений
 	fetch('../../api/messages')
 		.then(res => {
 			if (res.status === 200) {
-				console.log('Массив сообщений успешно получен!');
+				/*console.log('Массив сообщений успешно получен!');*///закоменчено ибо дикий спам
 				return res.json();
 			} else if (res.status === 400) {
 				throw new Error("Не удалось получить массив сообщений!")
 			}
 		})
-		.then(data => {
-			console.log(data);
+		.then(data => { 
+			/*console.log(data);*/
+			if ((flag1 === 1 )) {
+			check_new_mess(data);
+			}
+			mess_mass = data;
+			flag1 = 1;
 		})
 		.catch(e => alert(e));
 }    
