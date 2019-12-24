@@ -3,6 +3,7 @@ var users_data = {//все юзеры, в данном случае "Я" и "С�
 	points: ["200", "300", "200", "300", "200", "300"]
 }
 
+let id_game = ''//переменная хранящая id текущей игровой сессии
 
 function requests() {
 
@@ -171,7 +172,7 @@ function start_game() {//Функция начала игры
 		.catch(e => alert(e));
 }
 
-function record_list() {//Функция получения списка рекордов(не работает)
+function record_list() {//Функция получения списка рекордов
 	fetch('../../api/records').then(res => {
 		if (res.status === 200) {
 			console.log('Список рекордов успешно получен!');
@@ -186,12 +187,12 @@ function record_list() {//Функция получения списка рек�
 		.catch(e => alert(e));
 }
 
-function end_game() {//Функция завершения игры
+function end_game(score) {//Функция завершения игры
 
-	fetch('../../api/records', {
+	fetch('../../api/records/'+id_game, {
 		method: 'PATCH',
 		headers: { 'content-type': 'application/json; charset=UTF-8' },
-		body: JSON.stringify({ "id": id_game, "score": 123 }),
+		body: JSON.stringify({ "id": id_game, "score":score}),
 	}).then(res => {
 		if (res.status === 200) {
 			console.log('Информация о завершении игры успешно отправлена!');
