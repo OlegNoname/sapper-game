@@ -1,0 +1,134 @@
+.chat::-webkit-scrollbar {
+  width: 0.125rem;
+}
+.chat::-webkit-scrollbar-thumb {
+  background: #cfd8dc;
+}
+.chat::-webkit-scrollbar-thumb:hover {
+  background: #b0bec5;
+}
+
+.chat {
+  background-color: white;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 90%;
+  border-radius: 5px 5px 0 0;
+}
+
+ul {
+  padding-top: 5px;
+}
+.main {
+}
+.chat_main {
+  display: none;
+  flex-direction: column;
+}
+.from_me {
+  border-radius: 8px 8px;
+  color: white;
+  background-color: CornflowerBlue;
+  min-height: 1rem;
+  display: block;
+  overflow: visible;
+  margin-bottom: 0.7rem;
+  margin-left: 40px;
+  word-wrap: break-word;
+  padding: 0.4rem;
+  font-family: "Lato", sans-serif;
+  transition: 500ms;
+}
+.from_another {
+  border-radius: 8px 8px;
+  color: DarkBlue;
+  background-color: PowderBlue;
+  min-height: 1rem;
+  display: block;
+  overflow: visible;
+  margin-bottom: 1.1rem;
+  margin-left: -30px;
+  word-wrap: break-word;
+  padding: 0.4rem;
+  font-family: "Lato", sans-serif;
+  transition: 500ms;
+}
+.sendBox {
+  height: 10%;
+  width: 100%;
+  background: white;
+  border-radius: 0 0 5px 5px;
+}
+
+.sendBox input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.875rem;
+  display: block;
+  width: 60%;
+  /* height: 45px; */
+  border: none;
+  padding: 0.75rem 0.75rem;
+  line-height: 1.25rem;
+  border-top: 0.125rem solid #eceff1;
+  transition: 0.5s ease-in-out;
+  margin-top: 5px;
+}
+form {
+  display: flex;
+  height: 100%;
+  /* height: 35px; */
+  justify-content: space-around;
+  align-items: center;
+}
+#send {
+  margin-top: 5px;
+  background-color: MediumSlateBlue;
+  color: white;
+  height: 15px;
+  width: 25%;
+  padding-bottom: 30px;
+  border-radius: 8px 8px;
+  margin-right: 2px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+
+.myName {
+  font-size: 0.75rem;
+  color: #b0bec5;
+  /* margin-left: 240px; */
+}
+.anotherName {
+  font-size: 0.75rem;
+  color: #b0bec5;
+  margin-left: -27px;
+}
+
+/*стили для собеседника, в итоге не потребуются*/
+/* .sendBox1 {
+  position: absolute;
+  top: 500px;
+  width: 300px;
+  background: white;
+  margin-top: -400px;
+}
+.sendBox1 input {
+  font-family: "Lato", sans-serif;
+  font-size: 0.875rem;
+  display: block;
+  width: 70%;
+  height: 45px;
+  border: none;
+  padding: 0.75rem 0.75rem;
+  line-height: 1.25rem;
+  border-top: 0.125rem solid #eceff1;
+  transition: 0.5s ease-in-out;
+  margin-top: 5px;
+}
+.friend_example {
+  margin-left: 450px;
+  width: 300px;
+  height: 100px;
+  background-color: azure;
+  margin-top: -450px;
+} */

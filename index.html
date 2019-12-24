@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sapper</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+
+<body>
+     <!-- <button class="exit_butt" onclick="exit()">Выйти</button>                                       Кнопки для теста апи, балуйтесь:)
+    <button class="check_butt" onclick="user_check()">Узнать список пользователей онлайн</button>
+    <button class="start_butt" onclick="start_game()">Начать игру</button>
+    <button class="end_butt" onclick="end_game()">Завершить игру</button>
+    <button class="record_butt" onclick="record_list()">Узнать рекорды</button>
+    <button class="messages_butt" onclick="recive_messages()">Получить массив сообщений</button>-->
+    <!-- <div class="friend_example">Эмуляция отправки сообщения от собеседника
+        <div class="sendBox1">
+            <form>
+                <input type="text" id="message_from" placeholder="Введите сообщение...">
+                <input type="button" id="send2" value="Отправить">
+            </form>
+        </div>
+    </div> -->
+    <div class="content">
+        <div class="content-body">
+            <div id="content_modal_background">
+                <div id="start_menu">
+                    <input class="input-text" placeholder="Введите имя" type="text" name="user_name"
+                        id="user_name_input">
+                    <button class="button" id="start_btn">Начать</button>
+                </div>
+            </div>
+            <div id="game_window" width=''>
+                <div id="game_window_modal_background">
+                    <div id="game_window_pop_up">
+                        <p id="win" class="pop_up_header">Победа!</p>
+                        <p id="lose" class="pop_up_header">Поражение!</p>
+                        <button class="button" id="game_over_btn">Продолжить</button>
+                    </div>
+                </div>
+                <div id="menu">
+                    <input class="input-text" type="text" readonly name="user_name_output" id="user_name_output">
+                    <select class="select" name="difficulty-level" id="difficulty_level">
+                        <option value="Лёгкий">Лёгкий</option>
+                        <option value="Средний">Средний</option>
+                        <option value="Сложный">Сложный</option>
+                    </select>
+                    <!-- <input class="input-text" type="time" readonly name="time_counter" id="time_counter">  Неа доделано)))
+                    <input class="input-text" type="text" readonly name="bomb_counter" id="bomb_counter">-->
+                    <button class="button" name="new-game" id="new_game_btn">Новая игра</button>
+                </div>
+                <div id="field">
+                    <div class="cells">
+                        <!-- Здесь генерировать строки и в них клетки -->
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="chat_main">
+                <div class="chat">
+                </div>
+                <div class="sendBox">
+                    <form>
+                        <input type="text" id="message_input" placeholder="Введите сообщение...">
+                        <input type="button" id="send" onclick="send_message()" value="Отправить">
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="js/requests.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
