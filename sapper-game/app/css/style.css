@@ -84,6 +84,9 @@ select {
   text-shadow: 1px 1px 1px #000000;
   margin-top: -180px;
 }
+#lose, #win{
+  display: none;
+}
 #start_menu {
   background: linear-gradient(to top right, #2e3192, #1babff);
   /* border: 2px solid #00489b79; */
