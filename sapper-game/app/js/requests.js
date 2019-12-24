@@ -15,7 +15,9 @@ function requests() {
 
 	function NewMessage() {//функция отрисовки отправленного своего сообщения в чате
 		if (CheckMes()) {
+			//Здесь должно быть что то другое
 			user = users_data.users[0];
+
 			var message = document.querySelector('#message_input');
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
@@ -54,13 +56,14 @@ function requests() {
 
 	function NewMessage2() {//функция отрисовки отправленного чужого сообщения в чате, функция написана под этот пример, нужно будет реализовать проверку на юзеров, и соединить эти две функции в одну
 		if (CheckMes2()) {
-			user = users_data.users[1];
+			//Здесь должно быть что то другое
+			user = users_data.users[1];  
+
 			var message = document.querySelector('#message_from');
 			if (document.querySelectorAll("ul").length == 0) {
 				var window1 = document.createElement('ul');
 				var chat = document.querySelector('div');
 				chat.appendChild(window1);
-
 			}
 			else {
 				var window1 = document.querySelector('ul');
@@ -71,11 +74,11 @@ function requests() {
 			nameUser.innerHTML = user;
 			main.appendChild(nameUser);
 			let mes1 = document.createElement('li');
-			if (user != "Олег")//частично реализована проверка на юзеров
-			{
-				mes1.className = "from_another"
-				nameUser.className = "anotherName"
-			}
+			// if (user != "Олег")//частично реализована проверка на юзеров
+			// {
+				mes1.classList.add("from_another");
+				nameUser.classList.add("anotherName");
+			// }
 			mes1.innerHTML = message.value;
 
 			main.appendChild(mes1);

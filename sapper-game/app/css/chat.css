@@ -20,17 +20,12 @@ ul {
   padding-top: 5px;
 }
 .main {
-  min-height: 1rem;
-  width: 300px;
 }
 .chat_main {
   display: none;
   flex-direction: column;
-  width: 350px;
-  height: 700px;
 }
 .from_me {
-  width: 200px;
   border-radius: 8px 8px;
   color: white;
   background-color: CornflowerBlue;
@@ -45,7 +40,6 @@ ul {
   transition: 500ms;
 }
 .from_another {
-  width: 200px;
   border-radius: 8px 8px;
   color: DarkBlue;
   background-color: PowderBlue;
@@ -59,7 +53,6 @@ ul {
   font-family: "Lato", sans-serif;
   transition: 500ms;
 }
-
 .sendBox {
   height: 10%;
   width: 100%;
@@ -103,7 +96,7 @@ form {
 .myName {
   font-size: 0.75rem;
   color: #b0bec5;
-  margin-left: 240px;
+  /* margin-left: 240px; */
 }
 .anotherName {
   font-size: 0.75rem;
